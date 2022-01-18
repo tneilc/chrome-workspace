@@ -1,0 +1,28 @@
+.workspace-wrapper {
+  width: 90%;
+  height: 10%;
+  background-color: #E8EEF1;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.workspace-span {
+    color: #43B0F1;
+    font-weight:bolder;
+    margin-left: 10px;
+    width: 200px;
+    position: fixed;
+    overflow: hidden;
+}
+
+.workspace-btn-wrapper { 
+  width: 100%;
+  text-align: right;
+}
+
+.workspace-btn{
+    margin-right: 5px;
+    width: 18px;
+    height: 18px;
+}
