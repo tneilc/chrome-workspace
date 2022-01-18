@@ -1,0 +1,35 @@
+.namemodal-bg{
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(75, 75, 75, 0.5); /* Fallback color */
+    display: grid;
+    align-items: center;
+    justify-items: center;
+   
+}
+
+.namemodal-container {
+    width: 65%;
+    height: 30%;
+    border-radius: 10px;
+    text-align: center;
+    background-color:mintcream;
+}
+
+.namemodal-btn-wrapper {
+    text-align: right;
+}
+
+.namemodal-btn {
+    margin-right: 2px;
+    margin-top: 5px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+
+}
