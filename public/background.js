@@ -1,15 +1,13 @@
 /* eslint-disable no-undef */
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.message === "save_workspace") {
+  if (request.message === "save_workspace_to_storage") {
     const name = request.name
     chrome.tabs.query({}, function (tabs) {
-      const setValue = {}[name] = tabs.map((tab) => tab.url)
-      chrome.storage.local.set(setValue);
+      const value = tabs.map((tab) => tab.url)
+      const object = {};object[name] = value;
+      console.log(value)
+      chrome.storage.local.set(object);
       
     });
-    chrome.storage.local.get(["lol"],function(e) {
-      console.log(e.lol)
-    });
-
   }
 });

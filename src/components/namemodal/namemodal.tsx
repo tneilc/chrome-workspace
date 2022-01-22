@@ -3,14 +3,15 @@ import "./namemodal.css";
 
 interface props{
   changeState:() => void
+  addWorkspace:(workspaceName:string)=> void
 }
 
-export default function NameModal({changeState}:props) {
+export default function NameModal({changeState,addWorkspace}:props) {
 
   function inputHandler(e:KeyboardEvent<HTMLInputElement>) {
     if(e.key === "Enter"){
-      console.log("did something")
       changeState()
+      addWorkspace(e.currentTarget.value)
     }
   }
 

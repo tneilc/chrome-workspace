@@ -12,13 +12,17 @@ class SaveButton extends Component<{}, { showModal: boolean }> {
     this.setState({ showModal: !this.state.showModal });
   };
 
+  addWorkspace = (workspaceName:string) => {
+    chrome.runtime.sendMessage({message:"save_workspace_to_storage",name:workspaceName},(e)=>{})
+  }
+
   render() {
     return (
       <div className="savebutton-wrapper">
         <button onClick={this.setModalState} className="savebutton-btn">
           Save Workspace
         </button>
-        {this.state.showModal && <NameModal changeState={this.setModalState}/>}
+        {this.state.showModal && <NameModal changeState={this.setModalState} addWorkspace={this.addWorkspace}/>}
       </div>
     );
   }
