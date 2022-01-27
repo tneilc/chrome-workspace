@@ -1,14 +1,15 @@
 {
-  "name": "Lol",
-  "description": "Hah",
+  "name": "Workspace",
+  "description": "Save your open tabs as a workspace.",
   "version": "1.0",
   "manifest_version": 3,
+  "icons": {"48": "icons/48.png", "128": "icons/128.png" },
   "action": {
-      "default_popup": "index.html",
-      "default_title": "Open the popup"
+    "default_popup": "index.html",
+    "default_title": "Workspace"
   },
   "background": {
     "service_worker": "./background.js"
   },
-  "permissions": [ "tabs","storage"]
+  "permissions": ["tabs", "storage"]
 }
