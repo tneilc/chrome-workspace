@@ -2,27 +2,40 @@
   width: 90%;
   height: 10%;
   background-color: #E8EEF1;
+  margin: auto;
   margin-top: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
+  
 }
 .workspace-span {
     color: #43B0F1;
     font-weight:bolder;
     margin-left: 10px;
-    width: 200px;
-    position: fixed;
+    width: 150px;
+    position: absolute;
     overflow: hidden;
 }
 
 .workspace-btn-wrapper { 
   width: 100%;
-  text-align: right;
+  display: flex;
+  justify-content: right;
+  align-items: center;
 }
 
 .workspace-btn{
     margin-right: 5px;
     width: 18px;
     height: 18px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    border:none;
+}
+
+.workspace-btn:hover {
+  color: rgb(255, 49, 49);
 }

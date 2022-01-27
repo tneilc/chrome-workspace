@@ -1,19 +1,24 @@
-/*
-.App {
 
-}
+/* .App {
+  
+} */
+
 
 .app-list {
-  
+  border:3px solid rgb(255, 49, 49);
+  border-radius: 5px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
 }
-*/
 
-ul{
+
+.app-list-elements{
   overflow: scroll;
-  height: 300px;
+  height: 250px;
 }
 
-ul::-webkit-scrollbar{
+.app-list-elements::-webkit-scrollbar{
   display: none;
 }
 

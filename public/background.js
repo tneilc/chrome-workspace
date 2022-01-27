@@ -1,13 +1,34 @@
 /* eslint-disable no-undef */
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.message === "save_workspace_to_storage") {
-    const name = request.name
+    const name = request.name;
     chrome.tabs.query({}, function (tabs) {
-      const value = tabs.map((tab) => tab.url)
-      const object = {};object[name] = value;
-      console.log(value)
-      chrome.storage.local.set(object);
-      
+      const value = tabs.map((tab) => tab.url);
+      chrome.storage.local.get({ workspaces: {} }, (stored) => {
+        const object = stored;
+        object.workspaces[name] = value;
+        chrome.storage.local.set(object);
+      });
+    });
+    sendResponse("nice");
+  }
+  if (request.message === "load_workspaces_to_ui") {
+    chrome.storage.local.get("workspaces", (res) => {
+      sendResponse(res.workspaces);
     });
   }
+  if (request.message === "open_workspace_on_new_window") {
+    chrome.windows.create({ url: request.elements }, function (win) {});
+  }
+  if (request.message === "delete_workspace_from_storage") {
+    const name = request.name;
+    chrome.storage.local.get({ workspaces: {} }, (stored) => {
+      const object = stored;
+      delete object.workspaces[name];
+      chrome.storage.local.set(object);
+    });
+    sendResponse("nice");
+  }
+
+  return true;
 });
