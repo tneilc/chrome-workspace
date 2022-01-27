@@ -5,12 +5,19 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     chrome.tabs.query({}, function (tabs) {
       const value = tabs.map((tab) => tab.url);
       chrome.storage.local.get({ workspaces: {} }, (stored) => {
-        const object = stored;
-        object.workspaces[name] = value;
-        chrome.storage.local.set(object);
+        const keys = Object.keys(stored.workspaces);
+        if (keys.length < 15 && !keys.includes(name)) {
+          const object = stored;
+          object.workspaces[name] = value;
+          chrome.storage.local.set(object);
+          sendResponse(true);
+        }
+        else {
+          sendResponse(false);
+          return 0;
+        }
       });
     });
-    sendResponse("nice");
   }
   if (request.message === "load_workspaces_to_ui") {
     chrome.storage.local.get("workspaces", (res) => {

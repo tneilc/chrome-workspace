@@ -2,10 +2,10 @@ import { Component } from "react";
 import NameModal from "../namemodal/namemodal";
 import "./savebutton.css";
 
-class SaveButton extends Component<{}, { showModal: boolean }> {
+class SaveButton extends Component<{}, { showModal: boolean ,buttonText:string}> {
   constructor(props: any) {
     super(props);
-    this.state = { showModal: false };
+    this.state = { showModal: false ,buttonText:"Save Workspace"};
   }
 
   setModalState = () => {
@@ -16,7 +16,16 @@ class SaveButton extends Component<{}, { showModal: boolean }> {
     chrome.runtime.sendMessage(
       { message: "save_workspace_to_storage", name: workspaceName },
       (e) => {
-        window.location.reload();
+        console.log(e)
+        if(e === true){
+
+          window.location.reload();
+        }else {
+          this.setState({buttonText:"Failed"})
+          setTimeout(() => {
+            this.setState({buttonText:"Save Workspace"})
+          }, 2000);
+        }
       }
     );
   };
@@ -25,7 +34,7 @@ class SaveButton extends Component<{}, { showModal: boolean }> {
     return (
       <div className="savebutton-wrapper">
         <button onClick={this.setModalState} className="savebutton-btn">
-          Save Workspace
+          {this.state.buttonText}
         </button>
         {this.state.showModal && (
           <NameModal
